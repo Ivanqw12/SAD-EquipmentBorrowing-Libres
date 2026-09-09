@@ -4,14 +4,14 @@
    PASTE YOUR REAL VALUES BELOW (Supabase Dashboard > Settings > API).
    ============================================================ */
 
-const SUPABASE_URL = "YOUR_SUPABASE_URL";          // e.g. https://abcdefghijklm.supabase.co
-const SUPABASE_ANON_KEY = "YOUR_SUPABASE_ANON_KEY"; // e.g. eyJhbGciOi...
+const SUPABASE_URL = "https://xcxwjpyqvjpnoiwlnqlx.supabase.co";          // e.g. https://abcdefghijklm.supabase.co
+const SUPABASE_ANON_KEY = "sb_publishable_jLGhGLxVj-OQiO6p2xyUtA_Ou3IMXel"; // e.g. eyJhbGciOi...
 
 function isConfigReady() {
   return (
     SUPABASE_URL.startsWith("https://") &&
     !SUPABASE_URL.includes("YOUR_") &&
-    SUPABASE_ANON_KEY.length > 50 &&
+    SUPABASE_ANON_KEY.length > 20 &&
     !SUPABASE_ANON_KEY.includes("YOUR_")
   );
 }
