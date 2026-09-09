@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="960" height="620" viewBox="0 0 960 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <title>Entity Relationship Diagram - Online Equipment Borrowing and Return Monitoring System</title>
+
+  <!-- Background -->
+  <rect width="960" height="620" fill="#f1f5f9"/>
+
+  <!-- Title -->
+  <text x="480" y="34" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Entity Relationship Diagram (ERD)</text>
+  <text x="480" y="56" text-anchor="middle" font-size="13" fill="#64748b">Online Equipment Borrowing and Return Monitoring System</text>
+
+  <!-- ================= EQUIPMENT TABLE ================= -->
+  <g transform="translate(60,140)">
+    <rect width="300" height="34" fill="#2563eb" rx="6"/>
+    <text x="14" y="22" font-size="13" font-weight="700" fill="#ffffff">equipment</text>
+    <rect y="34" width="300" height="182" fill="#ffffff" stroke="#cbd5e1"/>
+
+    <!-- id -->
+    <rect x="0" y="34" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="51" font-size="12" font-weight="600" fill="#1e293b">id</text>
+    <rect x="118" y="39.5" width="30" height="15" rx="4" fill="#fbbf24"/>
+    <text x="133" y="50.5" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">PK</text>
+    <text x="290" y="51" text-anchor="end" font-size="11" fill="#64748b">bigint</text>
+
+    <!-- equipment_name -->
+    <rect x="0" y="60" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="77" font-size="12" fill="#1e293b">equipment_name</text>
+    <rect x="160" y="65.5" width="32" height="15" rx="4" fill="#fca5a5"/>
+    <text x="176" y="76.5" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">NN</text>
+    <text x="290" y="77" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- category -->
+    <rect x="0" y="86" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="103" font-size="12" fill="#1e293b">category</text>
+    <rect x="160" y="91.5" width="32" height="15" rx="4" fill="#fca5a5"/>
+    <text x="176" y="102.5" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">NN</text>
+    <text x="290" y="103" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- asset_code -->
+    <rect x="0" y="112" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="129" font-size="12" fill="#1e293b">asset_code</text>
+    <rect x="136" y="117.5" width="30" height="15" rx="4" fill="#c084fc"/>
+    <text x="151" y="128.5" text-anchor="middle" font-size="10" font-weight="700" fill="#581c87">UQ</text>
+    <rect x="200" y="117.5" width="32" height="15" rx="4" fill="#fca5a5"/>
+    <text x="216" y="128.5" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">NN</text>
+    <text x="290" y="129" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- condition -->
+    <rect x="0" y="138" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="155" font-size="12" fill="#1e293b">condition</text>
+    <text x="290" y="155" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- availability -->
+    <rect x="0" y="164" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="181" font-size="12" fill="#1e293b">availability</text>
+    <text x="290" y="181" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- created_at -->
+    <rect x="0" y="190" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="207" font-size="12" fill="#1e293b">created_at</text>
+    <text x="290" y="207" text-anchor="end" font-size="11" fill="#64748b">timestamptz</text>
+  </g>
+
+  <!-- ================= BORROW_TRANSACTIONS TABLE ================= -->
+  <g transform="translate(580,80)">
+    <rect width="300" height="34" fill="#dc2626" rx="6"/>
+    <text x="14" y="22" font-size="13" font-weight="700" fill="#ffffff">borrow_transactions</text>
+    <rect y="34" width="300" height="306" fill="#ffffff" stroke="#cbd5e1"/>
+
+    <!-- id -->
+    <rect x="0" y="34" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="51" font-size="12" font-weight="600" fill="#1e293b">id</text>
+    <rect x="118" y="39.5" width="30" height="15" rx="4" fill="#fbbf24"/>
+    <text x="133" y="50.5" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">PK</text>
+    <text x="290" y="51" text-anchor="end" font-size="11" fill="#64748b">bigint</text>
+
+    <!-- equipment_id -->
+    <rect x="0" y="60" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="77" font-size="12" fill="#1e293b">equipment_id</text>
+    <rect x="144" y="65.5" width="30" height="15" rx="4" fill="#60a5fa"/>
+    <text x="159" y="76.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">FK</text>
+    <text x="290" y="77" text-anchor="end" font-size="11" fill="#64748b">bigint</text>
+
+    <!-- borrower_name -->
+    <rect x="0" y="86" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="103" font-size="12" fill="#1e293b">borrower_name</text>
+    <rect x="160" y="91.5" width="32" height="15" rx="4" fill="#fca5a5"/>
+    <text x="176" y="102.5" text-anchor="middle" font-size="10" font-weight="700" fill="#7f1d1d">NN</text>
+    <text x="290" y="103" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- borrower_type -->
+    <rect x="0" y="112" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="129" font-size="12" fill="#1e293b">borrower_type</text>
+    <text x="290" y="129" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- department -->
+    <rect x="0" y="138" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="155" font-size="12" fill="#1e293b">department</text>
+    <text x="290" y="155" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- date_borrowed -->
+    <rect x="0" y="164" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="181" font-size="12" fill="#1e293b">date_borrowed</text>
+    <text x="290" y="181" text-anchor="end" font-size="11" fill="#64748b">date</text>
+
+    <!-- due_date -->
+    <rect x="0" y="190" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="207" font-size="12" fill="#1e293b">due_date</text>
+    <text x="290" y="207" text-anchor="end" font-size="11" fill="#64748b">date</text>
+
+    <!-- date_returned -->
+    <rect x="0" y="216" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="233" font-size="12" fill="#1e293b">date_returned</text>
+    <text x="290" y="233" text-anchor="end" font-size="11" fill="#64748b">date</text>
+
+    <!-- status -->
+    <rect x="0" y="242" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="259" font-size="12" fill="#1e293b">status</text>
+    <text x="290" y="259" text-anchor="end" font-size="11" fill="#64748b">text</text>
+
+    <!-- user_id -->
+    <rect x="0" y="268" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="285" font-size="12" fill="#1e293b">user_id</text>
+    <rect x="128" y="273.5" width="30" height="15" rx="4" fill="#60a5fa"/>
+    <text x="143" y="284.5" text-anchor="middle" font-size="10" font-weight="700" fill="#1e3a8a">FK</text>
+    <text x="290" y="285" text-anchor="end" font-size="11" fill="#64748b">uuid</text>
+
+    <!-- created_at -->
+    <rect x="0" y="294" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="311" font-size="12" fill="#1e293b">created_at</text>
+    <text x="290" y="311" text-anchor="end" font-size="11" fill="#64748b">timestamptz</text>
+  </g>
+
+  <!-- ================= AUTH.USERS (reference) ================= -->
+  <g transform="translate(580,470)">
+    <rect width="300" height="34" fill="#475569" rx="6"/>
+    <text x="14" y="22" font-size="13" font-weight="700" fill="#ffffff">auth.users (Supabase)</text>
+    <rect y="34" width="300" height="52" fill="#ffffff" fill-opacity="0.6" stroke="#94a3b8" stroke-dasharray="4 3"/>
+
+    <rect x="0" y="34" width="300" height="26" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="51" font-size="12" font-weight="600" fill="#1e293b">id</text>
+    <rect x="118" y="39.5" width="30" height="15" rx="4" fill="#fbbf24"/>
+    <text x="133" y="50.5" text-anchor="middle" font-size="10" font-weight="700" fill="#78350f">PK</text>
+    <text x="290" y="51" text-anchor="end" font-size="11" fill="#64748b">uuid</text>
+
+    <rect x="0" y="60" width="300" height="26" stroke="#e2e8f0" stroke-width="0.5"/>
+    <text x="12" y="77" font-size="12" fill="#1e293b">email</text>
+    <text x="290" y="77" text-anchor="end" font-size="11" fill="#64748b">text</text>
+  </g>
+
+  <!-- Relationship: equipment.id to borrow_transactions.equipment_id (one-to-many) -->
+  <line x1="360" y1="187" x2="572" y2="153" stroke="#475569" stroke-width="1.6"/>
+  <g stroke="#475569" stroke-width="1.6" fill="none">
+    <line x1="572" y1="153" x2="560" y2="142"/>
+    <line x1="572" y1="153" x2="560" y2="153"/>
+    <line x1="572" y1="153" x2="560" y2="164"/>
+  </g>
+  <circle cx="368" cy="187" r="11" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+  <text x="368" y="191" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">1</text>
+  <circle cx="556" cy="150" r="11" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+  <text x="556" y="154" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">M</text>
+
+  <!-- Relationship: borrow_transactions.user_id to auth.users.id (many-to-one) -->
+  <line x1="730" y1="361" x2="730" y2="470" stroke="#94a3b8" stroke-width="1.6" stroke-dasharray="6 4"/>
+  <g stroke="#94a3b8" stroke-width="1.6" fill="none">
+    <line x1="730" y1="361" x2="718" y2="350"/>
+    <line x1="730" y1="361" x2="718" y2="361"/>
+    <line x1="730" y1="361" x2="718" y2="372"/>
+  </g>
+  <circle cx="710" cy="484" r="11" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="710" y="488" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">1</text>
+  <circle cx="750" cy="484" r="11" fill="#ffffff" stroke="#94a3b8" stroke-width="1.4"/>
+  <text x="750" y="488" text-anchor="middle" font-size="11" font-weight="700" fill="#475569">M</text>
+
+  <!-- ================= LEGEND ================= -->
+  <g transform="translate(60,470)">
+    <rect width="440" height="96" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+    <text x="14" y="22" font-size="12" font-weight="700" fill="#1e293b">Legend</text>
+    <rect x="14" y="34" width="30" height="15" rx="4" fill="#fbbf24"/>
+    <text x="52" y="46" font-size="11" fill="#334155">Primary Key (PK)</text>
+    <rect x="152" y="34" width="30" height="15" rx="4" fill="#60a5fa"/>
+    <text x="190" y="46" font-size="11" fill="#334155">Foreign Key (FK)</text>
+    <rect x="294" y="34" width="30" height="15" rx="4" fill="#c084fc"/>
+    <text x="332" y="46" font-size="11" fill="#334155">Unique (UQ)</text>
+    <rect x="14" y="60" width="32" height="15" rx="4" fill="#fca5a5"/>
+    <text x="54" y="72" font-size="11" fill="#334155">Not Null (NN)</text>
+    <rect x="152" y="58" width="30" height="18" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+    <text x="167" y="70.5" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">1</text>
+    <line x1="168" y1="67" x2="198" y2="67" stroke="#475569" stroke-width="1.6"/>
+    <rect x="200" y="58" width="30" height="18" rx="4" fill="#ffffff" stroke="#475569" stroke-width="1.4"/>
+    <text x="215" y="70.5" text-anchor="middle" font-size="10" font-weight="700" fill="#475569">M</text>
+    <text x="238" y="71" font-size="11" fill="#334155">one-to-many relationship (crow's foot)</text>
+  </g>
+</svg>

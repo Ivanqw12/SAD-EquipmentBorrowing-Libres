@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000" height="620" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif">
+  <title>Use Case Diagram - Online Equipment Borrowing and Return Monitoring System</title>
+
+  <rect width="1000" height="620" fill="#f1f5f9"/>
+
+  <!-- Title -->
+  <text x="500" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#1e293b">Use Case Diagram</text>
+  <text x="500" y="52" text-anchor="middle" font-size="13" fill="#64748b">Online Equipment Borrowing and Return Monitoring System</text>
+
+  <!-- ================= SYSTEM BOUNDARY ================= -->
+  <rect x="240" y="72" width="570" height="496" rx="10" fill="none" stroke="#475569" stroke-width="1.6"/>
+  <text x="525" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="#475569">Online Equipment Borrowing and Return Monitoring System</text>
+
+  <!-- ================= ACTOR 1: SYSTEM USER ================= -->
+  <g stroke="#1e293b" stroke-width="2">
+    <circle cx="80" cy="318" r="15" fill="#ffffff"/>
+    <line x1="80" y1="333" x2="80" y2="366"/>
+    <line x1="60" y1="346" x2="100" y2="346"/>
+    <line x1="80" y1="366" x2="64" y2="392"/>
+    <line x1="80" y1="366" x2="96" y2="392"/>
+  </g>
+  <text x="78" y="412" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">System User /</text>
+  <text x="78" y="428" text-anchor="middle" font-size="13" font-weight="700" fill="#1e293b">Equipment Custodian</text>
+
+  <!-- ================= USE CASES ================= -->
+  <g fill="#ffffff" stroke="#2563eb" stroke-width="1.4">
+    <!-- row 1 (y=130) -->
+    <ellipse cx="330" cy="130" rx="80" ry="21"/>
+    <ellipse cx="520" cy="130" rx="80" ry="21"/>
+    <ellipse cx="710" cy="130" rx="80" ry="21"/>
+    <!-- row 2 (y=220) -->
+    <ellipse cx="330" cy="220" rx="80" ry="21"/>
+    <ellipse cx="520" cy="220" rx="80" ry="21"/>
+    <ellipse cx="710" cy="220" rx="80" ry="21"/>
+    <!-- row 3 (y=310) -->
+    <ellipse cx="330" cy="310" rx="80" ry="21"/>
+    <ellipse cx="520" cy="310" rx="80" ry="21"/>
+    <ellipse cx="710" cy="310" rx="80" ry="21"/>
+    <!-- row 4 (y=400) -->
+    <ellipse cx="330" cy="400" rx="80" ry="21"/>
+    <ellipse cx="520" cy="400" rx="80" ry="21"/>
+    <ellipse cx="710" cy="400" rx="80" ry="21"/>
+    <!-- row 5 (y=490) -->
+    <ellipse cx="330" cy="490" rx="80" ry="21"/>
+  </g>
+
+  <!-- labels -->
+  <g text-anchor="middle" font-size="12.5" font-weight="600" fill="#1e293b">
+    <text x="330" y="134">Login</text>
+    <text x="520" y="134">Logout</text>
+    <text x="710" y="134">View Dashboard</text>
+
+    <text x="330" y="224">Add Equipment</text>
+    <text x="520" y="224">View Equipment</text>
+    <text x="710" y="224">Edit Equipment</text>
+
+    <text x="330" y="314">Delete Equipment</text>
+    <text x="520" y="314">Search Equipment</text>
+    <text x="710" y="314">Record Borrowing</text>
+
+    <text x="330" y="404">View Transactions</text>
+    <text x="520" y="404">Return Equipment</text>
+    <text x="710" y="404">Search Transactions</text>
+
+    <text x="330" y="494">Filter Transactions</text>
+  </g>
+
+  <!-- ================= LINES: SYSTEM USER -> USE CASES ================= -->
+  <g stroke="#64748b" stroke-width="1.3">
+    <line x1="92" y1="350" x2="255" y2="130"/>
+    <line x1="92" y1="350" x2="255" y2="220"/>
+    <line x1="92" y1="350" x2="255" y2="310"/>
+    <line x1="92" y1="350" x2="255" y2="400"/>
+    <line x1="92" y1="350" x2="255" y2="490"/>
+
+    <line x1="100" y1="350" x2="445" y2="130"/>
+    <line x1="100" y1="350" x2="445" y2="220"/>
+    <line x1="100" y1="350" x2="445" y2="310"/>
+    <line x1="100" y1="350" x2="445" y2="400"/>
+
+    <line x1="100" y1="350" x2="635" y2="130"/>
+    <line x1="100" y1="350" x2="635" y2="220"/>
+    <line x1="100" y1="350" x2="635" y2="310"/>
+    <line x1="100" y1="350" x2="635" y2="400"/>
+  </g>
+
+  <!-- ================= ACTOR 2: BORROWER (indirect) ================= -->
+  <g stroke="#94a3b8" stroke-width="2">
+    <circle cx="920" cy="318" r="12" fill="#ffffff"/>
+    <line x1="920" y1="330" x2="920" y2="356"/>
+    <line x1="904" y1="340" x2="936" y2="340"/>
+    <line x1="920" y1="356" x2="907" y2="377"/>
+    <line x1="920" y1="356" x2="933" y2="377"/>
+  </g>
+  <text x="922" y="395" text-anchor="middle" font-size="12" font-weight="700" fill="#64748b">Borrower</text>
+  <text x="922" y="410" text-anchor="middle" font-size="11" fill="#94a3b8">(indirect actor)</text>
+
+  <!-- dashed line: borrower needs are handled by the system user -->
+  <line x1="838" y1="410" x2="898" y2="410" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="922" y="425" text-anchor="middle" font-size="10.5" fill="#94a3b8" font-style="italic">Borrower transactions are</text>
+  <text x="922" y="439" text-anchor="middle" font-size="10.5" fill="#94a3b8" font-style="italic">handled by the System User</text>
+</svg>

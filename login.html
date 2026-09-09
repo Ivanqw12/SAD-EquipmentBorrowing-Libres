@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Online Equipment Borrowing and Return Monitoring System</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-card">
+      <h1>Equipment Borrowing System</h1>
+      <p class="auth-sub">Online Equipment Borrowing and Return Monitoring System</p>
+      <div id="auth-error" class="alert alert-danger" hidden></div>
+      <form id="login-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@college.edu" autocomplete="email" required />
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required />
+        <button type="submit" id="auth-btn">Login</button>
+      </form>
+      <p class="auth-toggle">
+        <span id="auth-toggle-text">No account yet?</span>
+        <a href="#" id="auth-toggle-link">Sign Up</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- Supabase JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script>
+    // If a session already exists, go straight to the dashboard
+    (async function () {
+      if (window.supabaseClient) {
+        const { data } = await window.supabaseClient.auth.getSession();
+        if (data.session) {
+          window.location.replace("index.html");
+          return;
+        }
+      }
+      initAuthPage();
+    })();
+  </script>
+</body>
+</html>

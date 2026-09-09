@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Online Equipment Borrowing and Return Monitoring System</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ======================= TOPBAR ======================= -->
+  <header class="topbar">
+    <div class="brand">
+      Equipment Borrowing System
+      <small>Online Equipment Borrowing and Return Monitoring System</small>
+    </div>
+    <div class="topbar-right">
+      <span id="user-display"></span>
+      <button id="logout-btn" class="btn btn-outline btn-small">Logout</button>
+    </div>
+  </header>
+
+  <!-- ======================= TABS ======================= -->
+  <nav class="tabs">
+    <button class="tab active" data-tab="dashboard">Dashboard</button>
+    <button class="tab" data-tab="equipment">Equipment</button>
+    <button class="tab" data-tab="transactions">Transactions</button>
+  </nav>
+
+  <main>
+    <div id="app-error" class="alert alert-danger" hidden></div>
+
+    <!-- ==================== DASHBOARD ==================== -->
+    <section id="tab-dashboard" class="tab-panel active">
+      <div class="stats-grid">
+        <div class="stat-card stat-total">
+          <div class="stat-label">Total Equipment</div>
+          <div class="stat-value" id="stat-total">0</div>
+        </div>
+        <div class="stat-card stat-available">
+          <div class="stat-label">Available</div>
+          <div class="stat-value" id="stat-available">0</div>
+        </div>
+        <div class="stat-card stat-borrowed">
+          <div class="stat-label">Borrowed</div>
+          <div class="stat-value" id="stat-borrowed">0</div>
+        </div>
+        <div class="stat-card stat-returned">
+          <div class="stat-label">Returned Transactions</div>
+          <div class="stat-value" id="stat-returned">0</div>
+        </div>
+        <div class="stat-card stat-overdue">
+          <div class="stat-label">Overdue</div>
+          <div class="stat-value" id="stat-overdue">0</div>
+        </div>
+      </div>
+
+      <div class="dashboard-section">
+        <h2>Currently Overdue Transactions</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Equipment</th>
+                <th>Borrower</th>
+                <th>Department</th>
+                <th>Due Date</th>
+              </tr>
+            </thead>
+            <tbody id="overdue-preview"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EQUIPMENT ==================== -->
+    <section id="tab-equipment" class="tab-panel">
+      <h2 style="font-size:18px; margin-bottom:14px;">Equipment Management</h2>
+
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <input type="search" id="eq-search" placeholder="Search by name or asset code..." />
+          <select id="eq-filter">
+            <option value="All">Availability: All</option>
+            <option value="Available">Available</option>
+            <option value="Borrowed">Borrowed</option>
+          </select>
+        </div>
+        <div class="toolbar-right">
+          <button id="add-equipment-btn" class="btn btn-primary">+ Add Equipment</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Asset Code</th>
+              <th>Equipment</th>
+              <th>Category</th>
+              <th>Condition</th>
+              <th>Availability</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="equipment-table"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== TRANSACTIONS ==================== -->
+    <section id="tab-transactions" class="tab-panel">
+      <h2 style="font-size:18px; margin-bottom:14px;">Borrowing Transactions</h2>
+
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <input type="search" id="tx-search" placeholder="Search equipment, code, or borrower..." />
+          <select id="tx-filter">
+            <option value="All">Status: All</option>
+            <option value="Borrowed">Borrowed</option>
+            <option value="Returned">Returned</option>
+            <option value="Overdue">Overdue</option>
+          </select>
+        </div>
+        <div class="toolbar-right">
+          <button id="record-borrow-btn" class="btn btn-primary">+ Record Borrowing</button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Equipment</th>
+              <th>Borrower</th>
+              <th>Type</th>
+              <th>Department</th>
+              <th>Date Borrowed</th>
+              <th>Due Date</th>
+              <th>Date Returned</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-table"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ MODAL: ADD / EDIT EQUIPMENT ============ -->
+  <div class="modal" id="equipment-modal">
+    <div class="modal-card">
+      <h3 id="equipment-modal-title">Add Equipment</h3>
+      <div class="modal-grid">
+        <div class="form-field full">
+          <label for="eq-name">Equipment Name *</label>
+          <input type="text" id="eq-name" maxlength="100" />
+        </div>
+        <div class="form-field">
+          <label for="eq-category">Category *</label>
+          <select id="eq-category">
+            <option value="Laptop">Laptop</option>
+            <option value="Projector">Projector</option>
+            <option value="Camera">Camera</option>
+            <option value="Microphone">Microphone</option>
+            <option value="Router">Router</option>
+            <option value="Extension Cord">Extension Cord</option>
+            <option value="HDMI Cable">HDMI Cable</option>
+            <option value="Computer Toolkit">Computer Toolkit</option>
+            <option value="Portable Speaker">Portable Speaker</option>
+            <option value="Other ICT Equipment">Other ICT Equipment</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="eq-asset-code">Asset Code *</label>
+          <input type="text" id="eq-asset-code" maxlength="30" />
+        </div>
+        <div class="form-field full">
+          <label for="eq-condition">Condition</label>
+          <select id="eq-condition">
+            <option value="Good">Good</option>
+            <option value="Fair">Fair</option>
+            <option value="For Repair">For Repair</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="eq-cancel-btn" class="btn btn-outline">Cancel</button>
+        <button id="eq-save-btn" class="btn btn-primary">Save Equipment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: RECORD BORROWING / EDIT TRANSACTION ============ -->
+  <div class="modal" id="borrow-modal">
+    <div class="modal-card">
+      <h3 id="borrow-modal-title">Record Borrowing</h3>
+      <div class="modal-grid">
+        <div class="form-field">
+          <label for="bx-borrower">Borrower Name *</label>
+          <input type="text" id="bx-borrower" maxlength="100" />
+        </div>
+        <div class="form-field">
+          <label for="bx-borrower-type">Borrower Type *</label>
+          <select id="bx-borrower-type">
+            <option value="Student">Student</option>
+            <option value="Faculty">Faculty</option>
+            <option value="Staff">Staff</option>
+          </select>
+        </div>
+        <div class="form-field full">
+          <label for="bx-department">Department *</label>
+          <input type="text" id="bx-department" maxlength="100" />
+        </div>
+        <div class="form-field full">
+          <label for="bx-equipment">Equipment *</label>
+          <select id="bx-equipment"></select>
+        </div>
+        <div class="form-field">
+          <label for="bx-date-borrowed">Date Borrowed *</label>
+          <input type="date" id="bx-date-borrowed" />
+        </div>
+        <div class="form-field">
+          <label for="bx-due-date">Due Date *</label>
+          <input type="date" id="bx-due-date" />
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button id="bx-cancel-btn" class="btn btn-outline">Cancel</button>
+        <button id="bx-save-btn" class="btn btn-primary">Save Transaction</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ MODAL: CONFIRM DELETE ============ -->
+  <div class="modal" id="confirm-modal">
+    <div class="modal-card">
+      <h3 id="confirm-title">Are you sure?</h3>
+      <p id="confirm-message" style="font-size:14px; color:#475569;">This action cannot be undone.</p>
+      <div class="modal-actions">
+        <button id="confirm-cancel-btn" class="btn btn-outline">Cancel</button>
+        <button id="confirm-ok-btn" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Powered by Supabase - deployed on GitHub Pages -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/equipment.js"></script>
+  <script src="js/transactions.js"></script>
+  <script>
+    (async function () {
+      const session = await requireAuth();
+      if (!session) return;
+      initTabs();
+      initEquipment();
+      initTransactions();
+      await loadDashboard();
+    })();
+
+    function initTabs() {
+      document.querySelectorAll(".tab").forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          document.querySelectorAll(".tab").forEach(function (t) { t.classList.remove("active"); });
+          document.querySelectorAll(".tab-panel").forEach(function (p) { p.classList.remove("active"); });
+          tab.classList.add("active");
+          var panel = tab.getAttribute("data-tab");
+          document.getElementById("tab-" + panel).classList.add("active");
+        });
+      });
+    }
+  </script>
+</body>
+</html>
